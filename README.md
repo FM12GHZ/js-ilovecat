@@ -102,14 +102,19 @@ Request parameter
 None
 
 Query paramter
-Field name	Type	Description
-q	string	고양이의 품종(영어/한글)
+
+
+| Field name | Type | Description
+|--------|-------|---------|-------|
+| q | string | 고양이의 품종(영어/한글) |
 
 Response
+
 Success 200
 
-Field name	Type	Description
-data	Array	Keyword로 검색된 고양이 사진 목록입니다.
+| Field name | Type | Description
+| data | Array | Keyword로 검색된 고양이 사진 목록입니다.
+
 ```
 HTTP/1.1 200 OK
 {
@@ -125,8 +130,10 @@ HTTP/1.1 200 OK
 ## 3. GET /cats/:id
 
 Request parameter
-Field name	Type	Description
-id	string	고양이 사진의 id값 입니다.
+
+| Field name | Type | Description
+|--------|-------|---------|-------|
+| id | string | 고양이 사진의 id값 입니다. 
 
 Query paramter
 None
@@ -134,8 +141,10 @@ None
 Response
 Success 200
 
-Field name	Type	Description
-data	Object	Id로 검색된 고양이 사진 입니다.
+| Field name | Type | Description
+|--------|-------|---------|-------|
+| data | Object | Id로 검색된 고양이 사진 입니다.
+
 ```
 HTTP/1.1 200 OK
 {
