@@ -71,7 +71,9 @@
 SearchResult 에 각 아이템을 클릭하는 이벤트를 Event Delegation 기법을 이용해 수정해주세요.
 컴포넌트 내부의 함수들이나 Util 함수들을 작게 잘 나누어주세요.
 
-# API
+# API 
+
+ENDPOINT : https://api.thecatapi.com/v1
 
 ## 1. GET /cats/random50
 Request parameter
@@ -97,12 +99,14 @@ HTTP/1.1 200 OK
 ```
 
 ## 2. GET /cats/search
+
 Request parameter
 None
 
 Query paramter
 Field name	Type	Description
 q	string	고양이의 품종(영어/한글)
+
 Response
 Success 200
 
@@ -121,9 +125,11 @@ HTTP/1.1 200 OK
 
 
 ## 3. GET /cats/:id
+
 Request parameter
 Field name	Type	Description
 id	string	고양이 사진의 id값 입니다.
+
 Query paramter
 None
 
