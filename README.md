@@ -84,9 +84,8 @@ Response
 Success 200
 
 
-
-| Field name | Type |  Description
-|--------|-------|---------|-------|
+| Field name | Type | Description  
+|--------|-------|---------|
 | data | Array |  랜덤한 50개의 고양이 사진 목록입니다.
 
 ```
