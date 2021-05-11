@@ -49,7 +49,7 @@
 # 스크롤 페이징 구현
 + 검색 결과 화면에서 유저가 브라우저 스크롤 바를 끝까지 이동시켰을 경우, 그 다음 페이지를 로딩하도록 만들어야 합니다.
 
-#랜덤 고양이 배너 섹션 추가
+# 랜덤 고양이 배너 섹션 추가
 + 현재 검색 결과 목록 위에 배너 형태의 랜덤 고양이 섹션을 추가합니다.
 + 앱이 구동될 때 `/api/cats/random50` api를 요청하여 받는 결과를 별도의 섹션에 노출합니다.
 + 검색 결과가 많더라도 화면에 5개만 노출하며 각 이미지는 좌, 우 슬라이드 이동 버튼을 갖습니다.
@@ -63,7 +63,23 @@
 + API fetch 코드를 async , await 문을 이용하여 수정해주세요. 해당 코드들은 에러가 났을 경우를 대비해서 적절히 처리가 되어있어야 합니다.
 + 필수 API 의 status code 에 따라 에러 메시지를 분리하여 작성해야 합니다. 아래는 예시입니다.
 ```
-  const request = async (url: string) => {     try {       const result = await fetch(url);       return result.json();     } catch (e) {       console.warn(e);     }   }    const api = {     fetchGif: keyword => {       return request(`${API_ENDPOINT}/api/gif/search?q=${keyword}`);     },     fetchGifAll: () => {       return request(`${API_ENDPOINT}/api/gif/all`);     }   };
+  const request = async (url: string) => {
+    try {
+      const result = await fetch(url);
+      return result.json();
+    } catch (e) {
+      console.warn(e);
+    }   
+   }    
+   
+   const api = {     
+    fetchGif: keyword => {       
+      return request(`${API_ENDPOINT}/api/gif/search?q=${keyword}`);
+      },
+    fetchGifAll: () => {
+      return request(`${API_ENDPOINT}/api/gif/all`);
+     }
+    };
   ```
   
 SearchResult 에 각 아이템을 클릭하는 이벤트를 Event Delegation 기법을 이용해 수정해주세요.
