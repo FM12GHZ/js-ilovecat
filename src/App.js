@@ -1,6 +1,6 @@
 console.log("app is running!");
 
-class App {
+export default class App {
   $target = null;
   data = [];
 
