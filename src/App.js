@@ -1,4 +1,6 @@
-console.log("app is running!");
+import SearchInput from "./components/SearchInput.js";
+import SearchResult from "./components/SearchResult.js";
+import ImageInfo from "./components/ImageInfo.js";
 
 export default class App {
   $target = null;
@@ -32,6 +34,10 @@ export default class App {
         image: null,
       },
     });
+    const darkmodeBtn = document.createElement("span");
+    darkmodeBtn.className = "darkmode-btn";
+    darkmodeBtn.innerText = "🌕";
+    $target.appendChild(darkmodeBtn);
   }
 
   setState(nextData) {
