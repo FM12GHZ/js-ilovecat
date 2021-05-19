@@ -1,6 +1,8 @@
 const API_ENDPOINT =
   "https://oivhcpn8r9.execute-api.ap-northeast-2.amazonaws.com/dev";
 
+export let isLoading = true;
+
 const request = async (url) => {
   try {
     const res = await fetch(url);
@@ -11,6 +13,9 @@ const request = async (url) => {
     return result;
   } catch (e) {
     alert(e.message);
+  } finally {
+    isLoading = false;
+    console.log("됐다!");
   }
 };
 

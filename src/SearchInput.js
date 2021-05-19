@@ -1,4 +1,5 @@
 const TEMPLATE = '<input type="text">';
+export let isSearchStart = false;
 
 export default class SearchInput {
   constructor({ $target, onSearch }) {
@@ -9,13 +10,20 @@ export default class SearchInput {
     $searchInput.className = "SearchInput";
     $target.appendChild($searchInput);
 
-    $searchInput.addEventListener("keyup", (e) => {
-      if (e.keyCode === 13) {
-        onSearch(e.target.value);
+    $searchInput.addEventListener("click", (e) => {
+      if (e.target.value !== "") {
+        e.target.value = "";
       }
     });
 
-    console.log("SearchInput created.", this);
+    $searchInput.addEventListener("keydown", (e) => {
+      if (e.keyCode === 13) {
+        onSearch(e.target.value);
+      } else if ((e.keyCode <= 90 && e.keyCode >= 68) || e.keyCode == 8) {
+        isSearchStart = true;
+        console.log(isSearchStart);
+      }
+    });
   }
   render() {}
 }

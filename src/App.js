@@ -1,4 +1,9 @@
-import { fetchCats, fetchCatDetail, fetchRandomCats } from "./api.js";
+import {
+  fetchCats,
+  fetchCatDetail,
+  fetchRandomCats,
+  isLoading,
+} from "./api.js";
 import SearchInput from "./SearchInput.js";
 import SearchResult from "./SearchResult.js";
 import ImageInfo from "./ImageInfo.js";
@@ -13,6 +18,7 @@ export default class App {
     this.searchInput = new SearchInput({
       $target,
       onSearch: async (keyword) => {
+        this.searchResult.render();
         const fetchCatsData = await fetchCats(keyword);
         this.setState(fetchCatsData.data);
       },
@@ -28,6 +34,7 @@ export default class App {
           image: selectedCatDetail.data,
         });
       },
+      isLoading: isLoading,
     });
 
     this.imageInfo = new ImageInfo({
