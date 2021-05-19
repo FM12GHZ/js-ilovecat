@@ -26,8 +26,8 @@
   }
   
   .SearchResult {
-    margin-top: 10px;
     display: grid;
+    margin-top: 10px;
     grid-template-columns: repeat(4, minmax(250px, 1fr));
     grid-gap: 10px;
   }
@@ -37,7 +37,24 @@
     height: 100%;
     object-fit: cover;
   }
-  
+
+  .SearchResult .empty {
+    width: 100%;
+    position: fixed;
+  }
+
+  .SearchResult .empty span {
+    display: block;
+    text-align: center;
+  }
+
+  .SearchResult .empty img {
+    display: block;
+    width: 500px;
+    object-fit: cover;
+    margin: auto;
+  }
+
   .SearchResult .item {
     background-color: #eee;
     display: inline-block;
@@ -83,6 +100,20 @@
   .ImageInfo .content-wrapper img {
     width: 100%;
   }
+
+  .loading {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: #aaaaaaaa;
+  }
+
+  .loading > img {
+    display: block;
+    margin: 130px auto;
+  }
   
   /* dark mode 처리
   @media (prefers-color-scheme: dark) {
@@ -92,4 +123,3 @@
     }
   }
   *?
-  
