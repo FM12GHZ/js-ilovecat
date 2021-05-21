@@ -1,7 +1,11 @@
 const TEMPLATE = '<input type="text">';
 export let isSearchStart = false;
+export const setIsSearchStart = (val) => {
+  isSearchStart = val;
+};
 
 export default class SearchInput {
+  onCallbackSearch = null;
   constructor({ $target, onSearch }) {
     const $searchInput = document.createElement("input");
     this.$searchInput = $searchInput;
@@ -9,6 +13,7 @@ export default class SearchInput {
 
     $searchInput.className = "SearchInput";
     $target.appendChild($searchInput);
+    this.onCallbackSearch = onSearch;
 
     $searchInput.addEventListener("click", (e) => {
       if (e.target.value !== "") {
@@ -26,4 +31,8 @@ export default class SearchInput {
     });
   }
   render() {}
+
+  searchHistory(keyword) {
+    this.onCallbackSearch(keyword);
+  }
 }

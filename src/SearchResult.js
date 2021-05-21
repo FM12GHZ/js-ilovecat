@@ -1,12 +1,12 @@
-import { isLoading } from "./api.js";
-import { isSearchStart } from "./SearchInput.js";
+import { isLoading, setIsLoading } from "./api.js";
+import { isSearchStart, setIsSearchStart } from "./SearchInput.js";
 
 export default class SearchResult {
   $searchResult = null;
   data = null;
   onClick = null;
 
-  constructor({ $target, initialData, onClick, isLoading }) {
+  constructor({ $target, initialData, onClick }) {
     this.$searchResult = document.createElement("main");
     this.$searchResult.className = "SearchResult";
     $target.appendChild(this.$searchResult);
@@ -20,13 +20,16 @@ export default class SearchResult {
   setState(nextData) {
     this.data = nextData;
     this.render();
+    setIsLoading(true);
+    setIsSearchStart(false);
   }
 
   render() {
     this.$searchResult.innerHTML =
       isSearchStart && isLoading
         ? `<img src = "../img/loading.gif"></img>`
-        : this.data
+        : this.data.length > 0
+        ? this.data
             .map(
               (cat) => `
             <article class="item">
@@ -34,7 +37,8 @@ export default class SearchResult {
             </article>
           `
             )
-            .join("");
+            .join("")
+        : `<div>There is no search result</div>`;
 
     this.$searchResult.querySelectorAll(".item").forEach(($item, index) => {
       $item.addEventListener("click", () => {

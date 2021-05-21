@@ -7,20 +7,31 @@ import {
 import SearchInput from "./SearchInput.js";
 import SearchResult from "./SearchResult.js";
 import ImageInfo from "./ImageInfo.js";
+import SearchHistory from "./SearchHistory.js";
 
 export default class App {
   $target = null;
   data = [];
+  keyword = "";
 
-  constructor($target) {
+  constructor($target, initialData) {
     this.$target = $target;
+    this.data = initialData;
 
     this.searchInput = new SearchInput({
       $target,
       onSearch: async (keyword) => {
         this.searchResult.render();
+        this.keyword = keyword;
         const fetchCatsData = await fetchCats(keyword);
         this.setState(fetchCatsData.data);
+      },
+    });
+
+    this.searchHistory = new SearchHistory({
+      $target,
+      onClickHistory: (reSearchTarget) => {
+        this.searchInput.searchHistory(reSearchTarget);
       },
     });
 
@@ -34,7 +45,6 @@ export default class App {
           image: selectedCatDetail.data,
         });
       },
-      isLoading: isLoading,
     });
 
     this.imageInfo = new ImageInfo({
@@ -50,5 +60,8 @@ export default class App {
   setState(nextData) {
     this.data = nextData;
     this.searchResult.setState(nextData);
+    localStorage.setItem("catSearchResult", JSON.stringify(this.data));
+    this.searchHistory.addHistory(this.keyword);
   }
+  //setState(data);
 }

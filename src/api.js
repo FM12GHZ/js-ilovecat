@@ -2,6 +2,9 @@ const API_ENDPOINT =
   "https://oivhcpn8r9.execute-api.ap-northeast-2.amazonaws.com/dev";
 
 export let isLoading = true;
+export const setIsLoading = (val) => {
+  isLoading = val;
+};
 
 const request = async (url) => {
   try {
