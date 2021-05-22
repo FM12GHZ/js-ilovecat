@@ -45,11 +45,31 @@
     width: 100%;
   }
   
-  .SearchInput {
-    width: 100%;
-    font-size: 40px;
-    padding: 10px 15px;
-  }
+.searching-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-box-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+.search-input {
+  font-size: 20px;
+  height: 45px;
+}
+
+
+.darkmode-btn {
+  font-size: 3rem;
+  position: fixed;
+  top: 0.2rem;
+  right: 6rem;
+  z-index: 3;
+}
   
   .ImageInfo {
     position: fixed;
