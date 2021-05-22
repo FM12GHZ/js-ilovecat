@@ -1,31 +1,99 @@
 @font-face {
-    font-family: "Goyang";
-    src: url("fonts/Goyang.woff") format("woff");
-    font-weight: normal;
-    font-style: normal;
+  font-family: "Goyang";
+  src: url("fonts/Goyang.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+body * {
+  font-family: Goyang;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+#App {
+  margin: 1.5em auto;
+  max-width: 1200px;
+  column-gap: 1.5em;
+}
+
+.SearchResult {
+  margin-top: 10px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(250px, 1fr));
+  grid-gap: 10px;
+}
+
+.SearchResult img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.SearchResult .item {
+  background-color: #eee;
+  display: inline-block;
+  margin: 0 0 1em;
+  width: 100%;
+}
+
+.SearchInput {
+  width: 100%;
+  font-size: 40px;
+  padding: 10px 15px;
+}
+
+.ImageInfo {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.ImageInfo .title {
+  display: flex;
+  justify-content: space-between;
+}
+
+.ImageInfo .title,
+.ImageInfo .description {
+  padding: 5px;
+}
+
+.ImageInfo .content-wrapper {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  border: 1px solid #eee;
+  border-radius: 5px;
+}
+
+.ImageInfo .content-wrapper img {
+  width: 100%;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: black;
+    color: white;
   }
-  
-  html {
-    box-sizing: border-box;
-  }
-  
-  body * {
-    font-family: Goyang;
-  }
-  
-  *,
-  *:before,
-  *:after {
-    box-sizing: inherit;
-  }
-  
-  #App {
-    margin: 1.5em auto;
-    max-width: 1200px;
-    column-gap: 1.5em;
-  }
-  
+}
+
+@media only screen and (max-width: 992px) {
   .SearchResult {
+<<<<<<< HEAD
     margin-top: 10px;
     display: grid;
     grid-template-columns: repeat(4, minmax(250px, 1fr));
@@ -45,11 +113,31 @@
     width: 100%;
   }
   
-  .SearchInput {
-    width: 100%;
-    font-size: 40px;
-    padding: 10px 15px;
-  }
+.searching-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-box-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+.search-input {
+  font-size: 20px;
+  height: 45px;
+}
+
+
+.darkmode-btn {
+  font-size: 3rem;
+  position: fixed;
+  top: 0.2rem;
+  right: 6rem;
+  z-index: 3;
+}
   
   .ImageInfo {
     position: fixed;
@@ -82,14 +170,20 @@
   
   .ImageInfo .content-wrapper img {
     width: 100%;
+=======
+    grid-template-columns: repeat(3, 1ft);
   }
-  
-  /* dark mode 처리
-  @media (prefers-color-scheme: dark) {
-    body {
-      background-color: #000;
-      color: white;
-    }
+}
+
+@media only screen and (max-width: 768px) {
+  .SearchResult {
+    grid-template-columns: repeat(2, 1ft);
+>>>>>>> 31d49f0cd9df2d86235d15ff21a71d06c2df2a79
   }
-  *?
-  
+}
+
+@media only screen and (max-width: 576) {
+  .SearchResult {
+    display: block;
+  }
+}
