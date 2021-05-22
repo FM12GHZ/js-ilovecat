@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { $ } from "../utils/querySelector.js";
 import Card from "../components/Card.js";
 
@@ -64,5 +65,44 @@ export default class SearchResult {
       noticeSection.appendChild(noticeImage);
       this.section.appendChild(noticeSection);
     }
+=======
+export default class SearchResult {
+  $searchResult = null;
+  data = null;
+  onClick = null;
+
+  constructor({ $target, initialData, onClick }) {
+    this.$searchResult = document.createElement("div");
+    this.$searchResult.className = "SearchResult";
+    $target.appendChild(this.$searchResult);
+
+    this.data = initialData;
+    this.onClick = onClick;
+
+    this.render();
+  }
+
+  setState(nextData) {
+    this.data = nextData;
+    this.render();
+  }
+
+  render() {
+    this.$searchResult.innerHTML = this.data
+      .map(
+        (cat) => `
+            <div class="item">
+              <img src=${cat.url} alt=${cat.name} />
+            </div>
+          `
+      )
+      .join("");
+
+    this.$searchResult.querySelectorAll(".item").forEach(($item, index) => {
+      $item.addEventListener("click", () => {
+        this.onClick(this.data[index]);
+      });
+    });
+>>>>>>> 31d49f0cd9df2d86235d15ff21a71d06c2df2a79
   }
 }

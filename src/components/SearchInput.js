@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { MESSAGE } from "../utils/Constant.js";
 import { $ } from "../utils/querySelector.js";
 import { setItem } from "../utils/sessionStorage.js";
@@ -68,4 +69,26 @@ export default class SearchInput {
     $wrapper.appendChild($recentKeywords);
     this.section.appendChild($wrapper);
   }
+=======
+const TEMPLATE = '<input type="text">';
+
+export default class SearchInput {
+  constructor({ $target, onSearch }) {
+    const $searchInput = document.createElement("input");
+    this.$searchInput = $searchInput;
+    this.$searchInput.placeholder = "고양이를 검색해보세요.|";
+
+    $searchInput.className = "SearchInput";
+    $target.appendChild($searchInput);
+
+    $searchInput.addEventListener("keyup", (e) => {
+      if (e.keyCode === 13) {
+        onSearch(e.target.value);
+      }
+    });
+
+    console.log("SearchInput created.", this);
+  }
+  render() {}
+>>>>>>> 31d49f0cd9df2d86235d15ff21a71d06c2df2a79
 }
