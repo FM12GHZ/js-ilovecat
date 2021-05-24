@@ -84,6 +84,15 @@ body * {
   padding: 10px 15px;
 }
 
+.SearchRandom {
+  display: flex;
+  flex-direction: row;
+}
+
+.SearchRandom img {
+  width: auto;
+}
+
 .ImageInfo {
   position: fixed;
   left: 0;
