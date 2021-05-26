@@ -87,10 +87,13 @@ body * {
 .SearchRandom {
   display: flex;
   flex-direction: row;
+  width: 18.5%;
 }
 
 .SearchRandom img {
-  width: auto;
+  align-items: center;
+  height: auto;
+  max-width: 100%;
 }
 
 .ImageInfo {

@@ -40,6 +40,11 @@ export default class App {
 
     this.searchRandomCats = new SearchRandomCats({
       $target,
+      onClickArrowBtn: async () => {
+        const randomCats = await fetchRandomCats();
+        console.log(randomCats);
+        this.searchRandomCats.setState(randomCats.data);
+      },
     });
 
     this.searchResult = new SearchResult({
