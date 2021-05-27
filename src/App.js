@@ -25,9 +25,12 @@ export default class App {
       onSearch: async (keyword) => {
         this.searchResult.render();
         this.keyword = keyword;
-        const randomCats = await fetchRandomCats();
         const fetchCatsData = await fetchCats(keyword);
-        this.setState(fetchCatsData.data, randomCats.data);
+        this.setState(fetchCatsData.data);
+      },
+      onSearchRandomCats: async () => {
+        const randomCats = await fetchRandomCats();
+        this.searchRandomCats.setState(randomCats.data);
       },
     });
 
@@ -69,10 +72,9 @@ export default class App {
     });
   }
 
-  setState(nextData, randomData) {
+  setState(nextData) {
     this.data = nextData;
     this.searchResult.setState(nextData);
-    this.searchRandomCats.setState(randomData);
     localStorage.setItem("catSearchResult", JSON.stringify(this.data));
     this.searchHistory.addHistory(this.keyword);
   }

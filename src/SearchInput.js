@@ -6,13 +6,18 @@ export const setIsSearchStart = (val) => {
 
 export default class SearchInput {
   onCallbackSearch = null;
-  constructor({ $target, onSearch }) {
+  constructor({ $target, onSearch, onSearchRandomCats }) {
     const $searchInput = document.createElement("input");
+    const $searchRandomStart = document.createElement("button");
     this.$searchInput = $searchInput;
+    this.$searchRandomStart = $searchRandomStart;
     this.$searchInput.placeholder = "고양이를 검색해보세요.";
+    this.$searchRandomStart.innerHTML = "랜덤";
 
     $searchInput.className = "SearchInput";
+    $searchRandomStart.className = "SearchRandomBtn";
     $target.appendChild($searchInput);
+    $target.appendChild($searchRandomStart);
     this.onCallbackSearch = onSearch;
 
     $searchInput.addEventListener("click", (e) => {
@@ -20,6 +25,8 @@ export default class SearchInput {
         e.target.value = "";
       }
     });
+
+    $searchRandomStart.addEventListener("click", onSearchRandomCats);
 
     $searchInput.addEventListener("keydown", (e) => {
       if (e.keyCode === 13) {
